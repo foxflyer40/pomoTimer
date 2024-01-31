@@ -1,0 +1,11 @@
+.main-window {
+  border: 2px solid blue;
+}
+
+.timer {
+  background-color: bisque;
+}
+
+.status {
+  background-color: lightgreen;
+}
