@@ -1,11 +1,27 @@
 .main-window {
   border: 2px solid blue;
+  height: 60px;
+  width: 200px;
 }
 
-.timer {
+p {
+  text-align: center;
+}
+
+#timer {
   background-color: bisque;
+  height: 30px;
+  margin: 0;
 }
 
-.status {
+#mode {
   background-color: lightgreen;
+  height: 30px;
+  margin: 0
+  ;
+}
+
+button {
+  margin-top: .5em;
+  width: 32%;
 }
