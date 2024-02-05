@@ -26,13 +26,12 @@ function timer() {
     if (workTime === 0) {
       workTime = workMinutes * 60;
     }
-    if (seconds < 10) {
-      seconds = "0" + seconds
-    }
+
    
   }
 
   function countDown() {
+
     seconds = workTime % 60;
     minutes = Math.floor(workTime / 60);
     workTime--
@@ -40,11 +39,15 @@ function timer() {
 
   
   function startTimer() {
-
+    // set interval for the timer to 1 second
+    // set initial workTime in seconds
+    // 
     initializeTimer()
     // console.log("start")
     countDown()
-
+    if (seconds < 10) {
+      seconds = "0" + seconds
+    }
   
     console.log(minutes);
     console.log(seconds);
@@ -57,11 +60,13 @@ function timer() {
 
   function pauseTimer() {
     console.log("pause")
-    intervalId = clearInterval(startTimer)
+    intervalId = clearInterval(intervalId)
+    console.log(intervalId)
   }
 
   function resumeTimer() {
     console.log("resume")
+    intervalId = setInterval(startTimer, 1000)
   }
 
   function resetTimer() {
