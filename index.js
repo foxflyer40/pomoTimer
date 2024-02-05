@@ -7,28 +7,57 @@ const resetTime = document.getElementById("reset-timer")
 
   const workMinutes = 25;
   const breakMinutes = 5;
-  let seconds = "00"
-  let pMinutes = 0
-  let pSeconds = 0
   let intervalId;
-
+  let minutes = 0;
+  let seconds = "00"
+  let workTime = 0;
 
 
 function timer() {
-
-
   startTime.addEventListener("click", startTimer);
   pauseTime.addEventListener("click", pauseTimer);
   resumeTime.addEventListener("click", resumeTimer);
- resetTime.addEventListener("click",resetTimer);  
+  resetTime.addEventListener("click", resetTimer);  
+  
+  function initializeTimer() {
+    if (!intervalId) {
+      intervalId = setInterval(startTimer, 1000)
+    }
+    if (workTime === 0) {
+      workTime = workMinutes * 60;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds
+    }
+   
+  }
 
+  function countDown() {
+    seconds = workTime % 60;
+    minutes = Math.floor(workTime / 60);
+    workTime--
+  }
+
+  
   function startTimer() {
-    console.log("start")
+
+    initializeTimer()
+    // console.log("start")
+    countDown()
+
+  
+    console.log(minutes);
+    console.log(seconds);
+
+    modeEl.innerHTML = "Work"
+    timerEl.innerHTML = `${minutes}: ${seconds}`;
+
   }
 
 
   function pauseTimer() {
     console.log("pause")
+    intervalId = clearInterval(startTimer)
   }
 
   function resumeTimer() {
@@ -40,35 +69,11 @@ function timer() {
   }
 
 
-    // if (!intervalId) {
-    //   intervalId = setInterval(startTimer, 1000)
-    // }
 
-    // function startTimer() {
-    //   console.log("start")
-    // }
-    // let workTime = workMinutes * 60;
-    // let breakTime = breakMinutes * 60;
 
-    // const minutes = Math.floor(workTime / 60);
- 
-    // let seconds = workTime % 60;
-    // if (seconds < 10) {
-    //   seconds = "0 + seconds"
-    // }
-  
-    // let pMinutes = minutes;
-    // let pSeconds = seconds;
 
-    // console.log(minutes);
-    // console.log(seconds);
 
-    // console.log(pMinutes);
-    // console.log(pSeconds);
-
-    // modeEl.innerHTML = "Work"
-    // timerEl.innerHTML = `${minutes}: ${seconds}`;
-    // workTime--
   }
+
 
 
